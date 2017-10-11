@@ -233,9 +233,9 @@ export interface FrameBase {
   ): Promise<object>;
   addScriptTag(url: string): Promise<void>;
   injectFile(filePath: string): Promise<void>;
-  evaluate<T = string>(
-    fn: T | EvaluateFn<T>,
-    ...args: Array<object | ElementHandle>
+  evaluate<T>(
+    fn: ((...args: any[]) => T) | string,
+    ...args: any[]
   ): Promise<T>;
   title(): Promise<string>;
   url(): Promise<string>;
